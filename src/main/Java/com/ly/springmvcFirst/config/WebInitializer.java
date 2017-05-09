@@ -13,7 +13,7 @@ import javax.servlet.ServletRegistration;
 /**
  * Created by Administrator on 2017/5/9.
  */
-public class WebInitializer implements WebApplicationInitializer {
+public class WebInitializer implements WebApplicationInitializer {//此接口是spring实现用来配置Servlet3.0+的接口，用来代替web.xml
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx=new AnnotationConfigWebApplicationContext();
