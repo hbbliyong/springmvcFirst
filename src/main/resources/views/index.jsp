@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-
+<form action="/zj/obj">
+<input type="text" id="id" name="id" placeholder="id"/><br/>
+<input type="text" id="name" name="name" placeholder="name"/><br/>
+    <input type="submit" value="提交"/>
+</form>
 </body>
 </html>

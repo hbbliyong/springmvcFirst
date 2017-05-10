@@ -1,5 +1,6 @@
 package com.ly.springmvcFirst.controller;
 
+import com.ly.springmvcFirst.entity.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,5 +30,22 @@ public class mvcZJDemoController {
         return "url: "+request.getRequestURI()+" can access,str: "+id;
     }
 
+    @RequestMapping(value = "/obj",produces = "application/json;charset=UTF-8")
+    public String passObj(User user,HttpServletRequest request){
+        return "url:" +request.getRequestURI()+" can assess ,obj id: "+user.getId()+" obj name:"+user.getName();
+    }
+
+    @RequestMapping(value={"/name1","/name2"},produces = "application/json;charset=UTF-8")
+    public String remove(HttpServletRequest request){
+        return "url:" +request.getRequestURI()+" can assess";
+    }
+
+    @RequestMapping(value = "getjson",produces = "application/json;charset=UTF-8")
+    public User getUser(){
+        User user=new User();
+        user.setId(111);
+        user.setName("hbbliyong");
+        return user;
+    }
 
 }
