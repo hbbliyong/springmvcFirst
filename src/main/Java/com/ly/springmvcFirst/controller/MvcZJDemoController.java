@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/zj")
-public class mvcZJDemoController {
+public class MvcZJDemoController {
     @RequestMapping(produces = "text/plain;charset=UTF-8;xx=123")
     public @ResponseBody String index(HttpServletRequest request){
         return "url:"+request.getRequestURI()+" can assess";

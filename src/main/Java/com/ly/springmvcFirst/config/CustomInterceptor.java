@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * （拦截器：INterceptor）实现对每一个请求处理前后进行相关业务的处理，类似Servlet的Filter
  * Created by Administrator on 2017/5/10.
  */
-public class MyInterceptor extends HandlerInterceptorAdapter{
+public class CustomInterceptor extends HandlerInterceptorAdapter{
     //请求之前执行
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -32,5 +32,11 @@ public class MyInterceptor extends HandlerInterceptorAdapter{
 
         System.out.println("本次请求的时间为："+new Long(endTime-startTime)+"ms");
         request.setAttribute("handlingTime",endTime-startTime);
+    }
+    //请求处理完成所执行的方法
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        super.afterCompletion(request, response, handler, ex);
+        System.out.println("请求处理完成所执行的方法-afterCompletion");
     }
 }

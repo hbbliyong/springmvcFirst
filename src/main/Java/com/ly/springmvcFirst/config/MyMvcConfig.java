@@ -3,10 +3,7 @@ package com.ly.springmvcFirst.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -36,14 +33,22 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
     }
 
     //配置过滤器
+    //创建拦截器对象
     @Bean
-    public  MyInterceptor myInterceptor()
+    public CustomInterceptor myInterceptor()
     {
-        return new MyInterceptor();
+        return new CustomInterceptor();
     }
-
+//添加自定义拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(myInterceptor());
+    }
+
+    //路由映射的快捷设置
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/jqueryTest").setViewName("jquery_test");
     }
 }
